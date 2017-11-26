@@ -318,19 +318,21 @@ open class SideMenuTransition: UIPercentDrivenInteractiveTransition {
         switch sideMenuManager.menuPresentMode {
             
         case .viewSlideOut, .viewSlideInOut:
+            mainView?.layer.masksToBounds = false
             mainView?.layer.shadowColor = sideMenuManager.menuShadowColor.cgColor
             mainView?.layer.shadowRadius = sideMenuManager.menuShadowRadius
             mainView?.layer.shadowOpacity = sideMenuManager.menuShadowOpacity
-            mainView?.layer.shadowOffset = CGSize(width: 0, height: 0)
+            mainView?.layer.shadowOffset = sideMenuManager.menuShadowOffset
             let direction:CGFloat = presentDirection == .left ? 1 : -1
             mainView?.frame.origin.x = direction * (menuView!.frame.width)
             
         case .menuSlideIn, .menuDissolveIn:
             if sideMenuManager.menuBlurEffectStyle == nil {
+                menuView?.layer.masksToBounds = false
                 menuView?.layer.shadowColor = sideMenuManager.menuShadowColor.cgColor
                 menuView?.layer.shadowRadius = sideMenuManager.menuShadowRadius
                 menuView?.layer.shadowOpacity = sideMenuManager.menuShadowOpacity
-                menuView?.layer.shadowOffset = CGSize(width: 0, height: 0)
+                menuView?.layer.shadowOffset = sideMenuManager.menuShadowOffset
             }
             mainView?.frame.origin.x = 0
         }

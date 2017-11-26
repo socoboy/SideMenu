@@ -102,6 +102,8 @@ open class SideMenuManager : NSObject {
     /// The radius of the shadow around the menu view controller or existing view controller depending on the `menuPresentMode`. Default is 5.
     open var menuShadowRadius: CGFloat = 5
     
+    open var menuShadowOffset: CGSize = CGSize.zero
+    
     /// Enable or disable interaction with the presenting view controller while the menu is displayed. Enabling may make it difficult to dismiss the menu or cause exceptions if the user tries to present and already presented menu. Default is false.
     open var menuPresentingViewControllerUserInteractionEnabled: Bool = false
     
